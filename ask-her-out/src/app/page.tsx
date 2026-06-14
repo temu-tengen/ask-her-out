@@ -6,25 +6,26 @@ import styles from "./page.module.css";
 import Form from "./form";
 
 export default function Home() {
-  let name = "(Girl's name goes here)";
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [favCuisine, setFavCuisine] = useState("");
+
+  const [name, setName] = useState("Hey Nivedina!");
 
   return (
     <div className={styles.page}>
       <link rel="icon" type="image/x-icon" href="/window.svg" />
-      <h1 className={styles.headingXL}>Hey {name}!</h1>
+      <h1 className={styles.headingXL}>{name}!</h1>
       {currentQuestion === 0 && (
         <Form
           question="Heyyy, could you possibly answer some questions..."
           answerOptions={[["Sure!", "Yes"], ["No thanks", "No"]]}
-          onAnswer={(response) => response === "Yes" ? setCurrentQuestion(1) : setCurrentQuestion(999)} 
+          onAnswer={(response) => response === "Yes" ? setCurrentQuestion(1) : setCurrentQuestion(998)} 
           textField={false}
         />
       )}
       {currentQuestion === 1 && (
         <Form
-          question="Would you like to go out with me?"
+          question="I like you. Would you like to go out with me?"
           answerOptions={["Yes", "No"]}
           textField={false}
           onAnswer={(response) => response === "Yes" ? setCurrentQuestion(2) : setCurrentQuestion(999)}
@@ -54,14 +55,36 @@ export default function Home() {
 
       {currentQuestion === 4 && (
         <Form 
-          question={favCuisine}
-          answerOptions={["Hello", "Bye"]}
-          onAnswer={() => {}}
+          question={`Awesome! I love ${favCuisine} too. How about we go out for some ${favCuisine} food together?`}
+          answerOptions={["Ok sure!", "Nah"]}
+          textField={false}
+          onAnswer={(response) => {response === "Ok sure!" ? setCurrentQuestion(5) : setCurrentQuestion(999)}}
+        />
+      )}
+
+      {currentQuestion === 5 && (
+        <Form
+          question={"YESS!! My # is 224 370 1959. Text me ASAP"}
+          answerOptions={["Got it! Talk to u", "Hell no.. "]}
+          textField={false}
+          onAnswer={(response) => {response === "Got it! Talk to u" ? setCurrentQuestion(1000) : setCurrentQuestion(999) 
+            setName("Byeee")}}
+        />
+      )}
+
+      {currentQuestion === 998 && (
+        <Form
+          question={"Are u sure.. :( Gimme a chance.."}
+          answerOptions={["Absolutely.", "Fine I'll keep going"]}
+          textField={false}
+          onAnswer={(response) => {response === "Absolutely." ? setCurrentQuestion(999) : setCurrentQuestion(0)}}
         />
       )}
 
       {currentQuestion === 999 && (
-        <Form question="Thanks anyway!" answerOptions={["Bye!"]} onAnswer={() => setCurrentQuestion(1000)} />
+        <Form question="Aw man.. Well it was worth a try. See ya!" answerOptions={["See ya!"]} onAnswer={() => {setCurrentQuestion(1000)
+          setName("Byeeee")}
+        } textField={false}/>
       )}
   </div>
   );

@@ -27,4 +27,10 @@
   margin-top: 50px;
 
   margin-bottom: 20px;
+  transition: font-size 0.5s ease;
+}
+
+.headingXL:hover {
+  font-size: 200px;
+  transition: font-size 0.5s ease;
 }
