@@ -1,5 +1,6 @@
 "use client";
 import styles from './form.module.css';
+import { useState } from 'react';
 
 type AnswerOption = string | [string, string];
 
@@ -11,6 +12,7 @@ type Props = {
 };
 
 export default function Form({ question, answerOptions, onAnswer, textField }: Props) {
+  const [fieldValue, setFieldValue] = useState("");
   return (
     <div className={styles.formContainer}>
       <h2 className={styles.questionText}>{question}</h2>
@@ -21,23 +23,31 @@ export default function Form({ question, answerOptions, onAnswer, textField }: P
 
           return (
 
-            <div>
+            <div key={option[0]}>
               {textField === true && (
                 <input
                   type="text"
                   className={styles.textField}
-                  onChange={(e) => onAnswer(e.target.value)}
+                  onChange={(e) => setFieldValue(e.target.value)}
                 />
               )}
 
-              <button
+              {textField === false && (<button
                 key={label}
                 className={styles.answerButton}
                 type="button"
                 onClick={() => onAnswer(value)}
               >
                 {label}
-              </button>
+              </button>)}
+
+              {textField === true && (
+                <button key={label}
+                  className={styles.answerButton}
+                  type="button"
+                  onClick={() => onAnswer(fieldValue)}
+                >{label}</button>
+              )}
 
             </div>
           );

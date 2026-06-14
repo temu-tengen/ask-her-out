@@ -8,6 +8,7 @@ import Form from "./form";
 export default function Home() {
   let name = "(Girl's name goes here)";
   const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [favCuisine, setFavCuisine] = useState("");
 
   return (
     <div className={styles.page}>
@@ -18,12 +19,14 @@ export default function Home() {
           question="Heyyy, could you possibly answer some questions..."
           answerOptions={[["Sure!", "Yes"], ["No thanks", "No"]]}
           onAnswer={(response) => response === "Yes" ? setCurrentQuestion(1) : setCurrentQuestion(999)} 
+          textField={false}
         />
       )}
       {currentQuestion === 1 && (
         <Form
           question="Would you like to go out with me?"
           answerOptions={["Yes", "No"]}
+          textField={false}
           onAnswer={(response) => response === "Yes" ? setCurrentQuestion(2) : setCurrentQuestion(999)}
         />
       )}
@@ -32,6 +35,7 @@ export default function Home() {
         <Form
           question="Wait.. Really??"
           answerOptions={["Yup, really.", "Nah jk"]}
+          textField={false}
           onAnswer={(response) => response === "Yup, really." ? setCurrentQuestion(3) : setCurrentQuestion(999)}
         />
       )}
@@ -41,7 +45,18 @@ export default function Home() {
           question="Ok! :) What's your fav cuisine?"
           answerOptions={["Lets keep going!"]}
           textField={true}
-          onAnswer= {() => {}}
+          onAnswer= {(response) => {
+            setFavCuisine(response);
+            setCurrentQuestion(4);
+          }}
+        />
+      )}
+
+      {currentQuestion === 4 && (
+        <Form 
+          question={favCuisine}
+          answerOptions={["Hello", "Bye"]}
+          onAnswer={() => {}}
         />
       )}
 
