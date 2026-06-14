@@ -1,0 +1,57 @@
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    background-color: rgb(245, 170, 232);
+    padding: 20px;
+
+    border-radius: 10px;
+}
+
+.questionText {
+    font-weight: bold;
+    font-size: 25px;
+
+    margin: 10px;
+}
+
+.answerOptions {
+
+}
+
+.answerButton {
+    background-color: rgb(245, 170, 232);
+    border: 2px solid white;
+    border-radius: 100px;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+
+    transition: background-color 0.3s ease;
+    transition: color 0.3s ease;
+    transition: font-size 0.3s ease;
+}
+
+.answerButton:hover {
+    background-color: white;
+    color: black;
+    font-weight: bolder;
+    font-size: 20px;
+
+    transition: background-color 0.3s ease;
+    transition: color 0.3s ease;
+    transition: font-size 0.3s ease;
+}
+
+.textField {
+    border: 2px solid white;
+    background-color: rgb(245, 170, 232);
+    border-radius: 100px;
+
+    height: 30px;
+}

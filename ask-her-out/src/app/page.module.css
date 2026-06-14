@@ -1,0 +1,30 @@
+.page {
+  --background: #a4b1e9;
+  --foreground: #fff;
+
+  --text-primary: #000;
+  --text-secondary: #666;
+
+  --button-primary-hover: #383838;
+  --button-secondary-hover: #f2f2f2;
+  --button-secondary-border: #ebebeb;
+
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  font-family: var(--font-geist-sans);
+  background-color: var(--background);
+}
+
+.headingXL {
+  font-weight: bolder;
+  font-family: var(--font-fredoka), sans-serif;
+  font-size: 70px;
+
+  display: flex;
+  margin-top: 50px;
+
+  margin-bottom: 20px;
+}
